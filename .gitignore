@@ -1,0 +1,15 @@
+/bin/
+/node_modules/
+.pulumi/
+
+# Local kubeconfig/talosconfig
+kubeconfig.yaml
+talosconfig.yaml
+*.kubeconfig
+
+# Editor/IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store

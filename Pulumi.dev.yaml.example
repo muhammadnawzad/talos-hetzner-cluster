@@ -1,0 +1,14 @@
+config:
+  hcloud:token:
+    secure: encrypted-hcloud-token
+  configurations:clusterName: "dev"
+  configurations:snapshotId: "encrypted-talos-image-snapshot-id"
+  configurations:talosVersion: "v1.xx.x"
+  configurations:kubernetesVersion: "v1.xx.x"
+  configurations:controlPlanes: '[{"name":"controlplane-01","type":"cx33","location":"fsn1"},{"name":"controlplane-02","type":"cx33","location":"hel1"},{"name":"controlplane-03","type":"cx33","location":"nbg1"}]'
+  configurations:workerNodes: '[{"name":"worker-01","type":"cx43","location":"fsn1"},{"name":"worker-02","type":"cx43","location":"hel1"},{"name":"worker-03","type":"cx43","location":"nbg1"}]'
+  configurations:deployCluster: "false"
+  tailscale:authKey:
+    secure: encrypted-tailscale-auth-key
+  tailscale:tailnet: "tailscale-tailnet"
+  configurations:allowInitialProvisioning: "true"

@@ -1,0 +1,7 @@
+name: infra
+description: Talos Kubernetes cluster on Hetzner Cloud
+runtime: nodejs
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: typescript
