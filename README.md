@@ -12,7 +12,7 @@ This project deploys a **bare bone Kubernetes cluster** with:
 - **Cilium CNI** with Gateway API support (replaces kube-proxy)
 - **Hetzner integrations** for load balancers and persistent volumes
 
-This is intentionally minimal infrastructure. After deployment, we recommend adding GitOps tooling and additional components (see [Next Steps](#next-steps)).
+This is intentionally minimal infrastructure. After deployment, I recommend adding GitOps tooling and additional components (see [Next Steps](#next-steps)).
 
 ## Architecture
 
@@ -227,7 +227,7 @@ talosctl -n controlplane-01-dev.<your-tailnet>.ts.net version
 
 ## Next Steps
 
-This cluster is intentionally bare bone. For production use, we recommend adding:
+This cluster is intentionally bare bone. For production use, I recommend adding:
 
 | Component          | Purpose                                        | Link                                                              |
 |--------------------|------------------------------------------------|-------------------------------------------------------------------|
@@ -281,4 +281,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-Released under the MIT License. See LICENSE for details.
+Released under the MIT License. See [LICENSE](LICENSE) for details.
