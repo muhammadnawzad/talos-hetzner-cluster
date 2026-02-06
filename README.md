@@ -14,6 +14,13 @@ This project deploys a **bare bone Kubernetes cluster** with:
 
 This is intentionally minimal infrastructure. After deployment, I recommend adding GitOps tooling and additional components (see [Next Steps](#next-steps)).
 
+>[!IMPORTANT] This repository provides the infrastructure-as-code (Pulumi) foundation for the [hetzner-flux-gitops](https://github.com/muhammadnawzad/hetzner-flux-gitops) repository.
+>Both projects are designed to work together, as there are specific assumptions made in this repository based on the gitops repository. While this repo can be used independently with modifications, exercise caution when doing so.
+
+---
+
+>[!WARNING] Please review all configurations thoroughly. This is one of my very first DevOps projects, and I am a hobbyist, not an expert. Everything here should be taken with a grain of salt and verified for your specific use case.
+
 ## Architecture
 
 ```mermaid
@@ -193,7 +200,7 @@ talosctl -n controlplane-01-dev.<your-tailnet>.ts.net version
 | Component      | Version | Purpose                                  |
 |----------------|---------|------------------------------------------|
 | Talos Linux    | v1.12.2 | Immutable, secure Kubernetes OS          |
-| Kubernetes     | v1.34.1 | Container orchestration                  |
+| Kubernetes     | v1.35.0 | Container orchestration                  |
 | Cilium         | v1.18.6 | CNI, kube-proxy replacement, Gateway API |
 | Hetzner CCM    | v1.29.2 | Cloud controller (node lifecycle, LBs)   |
 | Hetzner CSI    | v2.18.3 | Persistent volume provisioning           |

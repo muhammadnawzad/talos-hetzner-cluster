@@ -20,7 +20,7 @@ export const config: ClusterConfig = {
     name: cfg.require('clusterName'),
     snapshotId: cfg.require('snapshotId'),
     talosVersion: cfg.get('talosVersion') ?? 'v1.12.2',
-    kubernetesVersion: cfg.get('kubernetesVersion') ?? 'v1.34.1',
+    kubernetesVersion: cfg.get('kubernetesVersion') ?? 'v1.35.0',
     controlPlanes: cfg.requireObject<NodeSpec[]>('controlPlanes'),
     workers: cfg.requireObject<NodeSpec[]>('workerNodes'),
     tailscale: {

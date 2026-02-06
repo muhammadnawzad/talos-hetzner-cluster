@@ -43,7 +43,7 @@ export class HetznerCore extends ComponentResource {
             {
                 k8sProvider,
                 version: ciliumVersion,
-                gatewayApiEnabled: true,
+                gatewayApiEnabled: false,
                 l2AnnouncementsEnabled: true,
                 podCidr: clusterCidr,
             },
@@ -114,9 +114,10 @@ export class HetznerCore extends ComponentResource {
                             effect: 'NoSchedule',
                         },
                     ],
+                    hostNetwork: true,
                 },
             },
-            { parent: this, provider: k8sProvider, dependsOn: [hcloudSecret, this.cilium] },
+            { parent: this, provider: k8sProvider, dependsOn: [hcloudSecret] },
         );
 
         this.csiRelease = new Release(

@@ -39,7 +39,6 @@ if (config.deployCluster) {
 
     exports.controlPlaneNodes = cluster.controlPlaneNodes;
     exports.workerNodes = cluster.workerNodes;
-    exports.workerLoadBalancerIp = cluster.workerLoadBalancerIp;
 
     exports.kubeconfig = cluster.kubeconfig;
     exports.talosConfig = cluster.talosConfig;

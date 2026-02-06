@@ -51,7 +51,10 @@ function getCommonPatch(): object {
             },
             kubelet: {
                 registerWithFQDN: true,
-                extraArgs: { 'rotate-server-certificates': 'true' },
+                extraArgs: {
+                    'rotate-server-certificates': 'true',
+                    'cloud-provider': 'external',
+                },
                 extraMounts: [
                     {
                         destination: '/var/local',

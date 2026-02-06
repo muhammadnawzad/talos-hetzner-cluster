@@ -3,7 +3,6 @@ import { Kubeconfig } from '@pulumiverse/talos/cluster';
 import { Bootstrap, ConfigurationApply, Secrets } from '@pulumiverse/talos/machine';
 import { ClusterConfig, NodeSpec } from '../types';
 import { Firewall } from './firewall';
-import { LoadBalancer } from './loadbalancer';
 import { Network } from './network';
 import { Server } from './server';
 import { TalosSecrets, generateMachineConfig, generateTailscalePatch } from './talos';
@@ -32,7 +31,6 @@ export class TalosCluster extends ComponentResource {
     public readonly kubeconfig: Output<string>;
     public readonly networkId: Output<number>;
     public readonly talosConfig: Output<string>;
-    public readonly workerLoadBalancerIp: Output<string>;
     public readonly workerNodes: NodeOutput[];
 
     constructor(name: string, args: TalosClusterArgs, opts?: ComponentResourceOptions) {
@@ -58,16 +56,6 @@ export class TalosCluster extends ComponentResource {
                 role: 'worker',
                 floatingIp: args.floatingIp,
                 allowInitialProvisioning: cfg.allowInitialProvisioning,
-            },
-            { parent: this },
-        );
-
-        const workerLb = new LoadBalancer(
-            `${name}-worker-lb`,
-            {
-                role: 'worker',
-                location: cfg.workers[0]?.location ?? 'fsn1',
-                ports: [80, 443],
             },
             { parent: this },
         );
@@ -132,7 +120,6 @@ export class TalosCluster extends ComponentResource {
             tailscaleHostname: workerTailscaleHostnames[i],
         }));
 
-        this.workerLoadBalancerIp = workerLb.ipv4;
         this.kubeconfig = kubeconfig.kubeconfigRaw;
         this.talosConfig = talosSecrets.clientConfig.apply(c => c.talosConfig);
         this.networkId = network.id;
@@ -142,7 +129,6 @@ export class TalosCluster extends ComponentResource {
         this.registerOutputs({
             controlPlaneNodes: this.controlPlaneNodes,
             workerNodes: this.workerNodes,
-            workerLoadBalancerIp: this.workerLoadBalancerIp,
             kubeconfig: this.kubeconfig,
             talosConfig: this.talosConfig,
             networkId: this.networkId,
